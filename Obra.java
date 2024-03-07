@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+
 public class Obra {
 
     private String nombreObra;
     private String tipoDeObra;
+    private Artista artista;
     private int precioEnMillones;
     private int fecha;
+
 
 
     public String getNombreObra() {
@@ -31,12 +35,16 @@ public class Obra {
     }
 
 
-    public Obra (String nombreObra,String tipoDeObra, int precioEnMillones, int fechaCreacion){
+    public Obra (String nombreObra,String tipoDeObra, int precioEnMillones, int fechaCreacion, String nombreArtista){
+
+
 
         this.nombreObra=nombreObra;
         this.tipoDeObra=tipoDeObra;
         this.precioEnMillones=precioEnMillones;
         this.fecha=fechaCreacion;
+
+
 
     }
 
@@ -47,6 +55,7 @@ public class Obra {
                 ", tipoDeObra='" + tipoDeObra + '\'' +
                 ", precioEnMillones=" + precioEnMillones +
                 ", fecha=" + fecha +
+                ", nombreArtista='" + nombreArtista + '\'' +
                 '}';
     }
 }

@@ -4,9 +4,13 @@ public class Artista {
 
     private String nombreArtista;
     private String nacionalidad;
-    public ArrayList<Obra> listaObras=new ArrayList<Obra>();
 
 
+
+
+    public String getNombreArtista() {
+        return nombreArtista;
+    }
 
     private Obra findObra (String nomObra){
 
@@ -20,8 +24,19 @@ public class Artista {
         return null;
     }
 
+    private Artista findArtista (String NombreArtista){
 
+        for (int cont=0; cont<listArtist.size();cont++ ){
 
+            if (listArtist.get(cont).getNombreArtista().equals(NombreArtista)){
+
+                return listArtist.get(cont); //devuelve la posicion del artista en la lista
+            }
+
+        }
+
+        return null;
+    }
 
     public boolean addObra (String nomObra, String tipoObra, int precioMillones, int fechaCreada ){
 
@@ -35,16 +50,35 @@ public class Artista {
         return false;
     }
 
+    public boolean obraExiste (Obra obra){
+
+        if (findObra(obra.getNombreObra())!=null){
+
+
+            return true; //La obra existe en la lista
+        }
+
+        return false;
+    }
 
     public boolean addtoListaObr (String nombreObra, ArrayList<Obra> obra ){
-        boolean existe=true;
 
         if (listaObras.contains(findObra(nombreObra))){
 
             obra.add(findObra(nombreObra));
-            return false;  //Si = false significa que la obra no esta en la lista y la añade
+            return true;  //Si = true significa que la obra no esta en la lista y la añade
         }
-        return true;
+        return false;
+    }
+
+    public boolean addtoListaArtista (String nombredelArtista, ArrayList<Artista> listaArtista ){
+
+        if (listaArtista.contains(findArtista(nombreArtista))){
+
+            listaArtista.add(findArtista(nombreArtista));
+            return true;
+        }
+        return false;
     }
 
     public Artista (String nombreArtista, String nacionalidad){
@@ -56,5 +90,4 @@ public class Artista {
     this.listaObras=ObradelArtista;
 
     }
-
 }
