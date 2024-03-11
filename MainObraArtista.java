@@ -20,16 +20,23 @@ public static void Play () {
     Artista artista2 = new Artista("Pablo Picasso", "español");
     Artista artista3 = new Artista("Auguste Rodin", "francés");
 
-    listaArtistas.add(artista1);
-    listaArtistas.add(artista2);
-    listaArtistas.add(artista3);
+    artista1.addArtista(listaArtistas);
+    artista2.addArtista(listaArtistas);
+    artista3.addArtista(listaArtistas);
 
-    LinkedList<Obra> ListaDeObras = new LinkedList<Obra>();
-    artista1.addObra("Salvator Mundi", "óleo sobre madera", 450, 1500);
-    artista1.addObra("La Gioconda", "óleo sobre madera", 870, 1503);
-    artista2.addObra("El sueño", "óleo sobre lienzo", 155, 1932);
-    artista2.addObra("El Guernica", "óleo sobre lienzo", 2000, 1937);
-    artista3.addObra("El pensador", "escultura", 11, 1904);
+    LinkedList<Obra> listaDeObras = new LinkedList<Obra>();
+
+    Obra obra1=new Obra("Salvator Mundi", "óleo sobre madera", 450, 1500,artista1);
+    Obra obra2=new Obra("La Gioconda", "óleo sobre madera", 870, 1503,artista1);
+    Obra obra3=new Obra("El sueño", "óleo sobre lienzo", 155, 1932,artista2);
+    Obra obra4=new Obra("El Guernica", "óleo sobre lienzo", 2000, 1937,artista2);
+    Obra obra5=new Obra("El pensador", "escultura", 11, 1904,artista3);
+
+    obra1.addObra(listaDeObras);
+    obra2.addObra(listaDeObras);
+    obra3.addObra(listaDeObras);
+    obra4.addObra(listaDeObras);
+    obra5.addObra(listaDeObras);
 
 
     boolean continuar=true;

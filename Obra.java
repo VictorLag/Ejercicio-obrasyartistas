@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Obra {
 
@@ -8,6 +9,19 @@ public class Obra {
     private int precioEnMillones;
     private int fecha;
 
+    public Obra (String nombreObra,String tipoDeObra, int precioEnMillones, int fechaCreacion, Artista artista){
+
+
+
+        this.nombreObra=nombreObra;
+        this.tipoDeObra=tipoDeObra;
+        this.precioEnMillones=precioEnMillones;
+        this.fecha=fechaCreacion;
+        this.artista=artista;
+
+
+
+    }
 
 
     public String getNombreObra() {
@@ -34,19 +48,32 @@ public class Obra {
         this.fecha = fecha;
     }
 
-
-    public Obra (String nombreObra,String tipoDeObra, int precioEnMillones, int fechaCreacion, String nombreArtista){
-
+    public boolean addObra (LinkedList<Obra>listaObras){
 
 
-        this.nombreObra=nombreObra;
-        this.tipoDeObra=tipoDeObra;
-        this.precioEnMillones=precioEnMillones;
-        this.fecha=fechaCreacion;
+        if (findObra(listaObras)!=null){
 
+            listaObras.add(this);
+            return true; //Se añade a la lista de obras por que no encuentra ninguna obra con el mismo nombre
+        }
 
-
+        return false;
     }
+
+
+    private Obra findObra (LinkedList<Obra> listaObras){
+
+        for (int cont=0;cont< listaObras.size();cont++){
+
+            if (listaObras.get(cont).getNombreObra().equals(this.nombreObra)){
+
+                return listaObras.get(cont);
+            }
+        }
+        return null;
+    }
+
+
 
     @Override
     public String toString() {
@@ -55,7 +82,6 @@ public class Obra {
                 ", tipoDeObra='" + tipoDeObra + '\'' +
                 ", precioEnMillones=" + precioEnMillones +
                 ", fecha=" + fecha +
-                ", nombreArtista='" + nombreArtista + '\'' +
                 '}';
     }
 }
